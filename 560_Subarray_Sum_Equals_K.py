@@ -27,4 +27,21 @@ class Solution:
                 count += myHash[x]
             myHash[prefix_sum[j]] = myHash.get(prefix_sum[j], 0) + 1 #  create/update myHash dict with prefix sum
         return count
+
+
+
+
+*****More Comprehensive*******
+
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        running_sum = 0
+        count = 0
+        psHash = {0:1}
+        for i in range(0, len(nums)):
+            running_sum += nums[i]
+            count += psHash.get(running_sum - k, 0)
+            psHash[running_sum] =  psHash.get(running_sum, 0) + 1
+        return count
+
 ```
